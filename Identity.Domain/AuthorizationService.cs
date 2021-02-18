@@ -37,7 +37,7 @@ namespace FleetManagement.Security
             //Generate Token for user 
             var jwToken = new JwtSecurityToken(
                 issuer: "http://localhost:45092/",
-                audience: "http://localhost:45092/",
+                audience: "http://localhost:5000/",
                 claims: GetUserClaims(user),
                 notBefore: new DateTimeOffset(DateTime.Now).DateTime,
                 expires: new DateTimeOffset(DateTime.Now.AddDays(1)).DateTime,
