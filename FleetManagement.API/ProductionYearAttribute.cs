@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace FleetManagement.API
+namespace FleetManagement.Vehicles
 {
     [AttributeUsage(AttributeTargets.Property
                     | AttributeTargets.Field

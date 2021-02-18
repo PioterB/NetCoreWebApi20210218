@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
-namespace FleetManagement.API
+namespace FleetManagement.Vehicles
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class TimestampMiddleware

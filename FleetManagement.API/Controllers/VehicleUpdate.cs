@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FleetManagement.API.Controllers
+﻿namespace FleetManagement.Vehicles.Controllers
 {
     public class VehicleUpdate
     {

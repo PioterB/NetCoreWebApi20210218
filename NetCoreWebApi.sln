@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManagement.API", "FleetManagement.API\FleetManagement.API.csproj", "{47225B3F-672F-418D-973C-4FB5685CA289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetManagement.API", "FleetManagement.API\FleetManagement.API.csproj", "{47225B3F-672F-418D-973C-4FB5685CA289}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vehicles", "Vehicles", "{006A3C9A-F089-4C12-AE1D-C5C0C52D998B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetManagement.Domain", "FleetManagement.Domain\FleetManagement.Domain.csproj", "{2C5154B9-3D58-4B58-A80B-BE765B0E6127}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetManagement.Infrastructure", "FleetManagement.Infrastructure\FleetManagement.Infrastructure.csproj", "{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{CDAE5ADC-D314-4DA6-AFF9-41D3DF7A85BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreoCraft.Domain", "CreoCraft.Domain\CreoCraft.Domain.csproj", "{72412269-E9FF-4C33-90A6-D0DFD5A95E71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreoCraft.Infrastructre", "CreoCraft.Infrastructure\CreoCraft.Infrastructre.csproj", "{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +27,32 @@ Global
 		{47225B3F-672F-418D-973C-4FB5685CA289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47225B3F-672F-418D-973C-4FB5685CA289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47225B3F-672F-418D-973C-4FB5685CA289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C5154B9-3D58-4B58-A80B-BE765B0E6127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C5154B9-3D58-4B58-A80B-BE765B0E6127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C5154B9-3D58-4B58-A80B-BE765B0E6127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C5154B9-3D58-4B58-A80B-BE765B0E6127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72412269-E9FF-4C33-90A6-D0DFD5A95E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72412269-E9FF-4C33-90A6-D0DFD5A95E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72412269-E9FF-4C33-90A6-D0DFD5A95E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72412269-E9FF-4C33-90A6-D0DFD5A95E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47225B3F-672F-418D-973C-4FB5685CA289} = {006A3C9A-F089-4C12-AE1D-C5C0C52D998B}
+		{2C5154B9-3D58-4B58-A80B-BE765B0E6127} = {006A3C9A-F089-4C12-AE1D-C5C0C52D998B}
+		{FCF50641-DF74-4962-9DFC-D5F89EDA0A6D} = {006A3C9A-F089-4C12-AE1D-C5C0C52D998B}
+		{72412269-E9FF-4C33-90A6-D0DFD5A95E71} = {CDAE5ADC-D314-4DA6-AFF9-41D3DF7A85BC}
+		{912AAAEF-A1C3-41BF-8DA1-9E586A874AF9} = {CDAE5ADC-D314-4DA6-AFF9-41D3DF7A85BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9333BB23-2C27-446F-B8CF-003A24979709}

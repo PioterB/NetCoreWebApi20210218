@@ -1,4 +1,4 @@
-﻿namespace FleetManagement.API.Controllers
+﻿namespace FleetManagement.Vehicles.Controllers
 {
     public class VehicleModel
     {

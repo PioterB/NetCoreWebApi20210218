@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>cec8de08-7827-4f48-a81e-1c71e3215ab5</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <RootNamespace>FleetManagement.Vehicles</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
