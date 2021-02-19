@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CreoCraft.Domain;
+using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FleetManagement.Vehicles.Controllers
@@ -9,70 +11,68 @@ namespace FleetManagement.Vehicles.Controllers
     [ApiController]
     public class VehiclesController : ControllerBase
     {
-        private static List<VehicleModel> _vehiclesDatabase = new List<VehicleModel>()
+        private readonly IRepository<Guid, Vehicle> _vehiclesRepository;
+
+        public VehiclesController(IVehiclesRepository vehiclesRepository)
         {
-            new VehicleModel(){FriendlyName = "Pinky", Make = "Volvo", Model = "V40", ProductionYear = 2004},
-            new VehicleModel(){FriendlyName = "Yellow", Make = "Volvo", Model = "V60", ProductionYear = 2016},
-            new VehicleModel(){FriendlyName = "Black", Make = "Volvo", Model = "V90", ProductionYear = 2019},
-            new VehicleModel(){FriendlyName = "Monster", Make = "Volvo", Model = "XC90", ProductionYear = 2021},
-        };
+            _vehiclesRepository = vehiclesRepository;
+        }
 
 
         [HttpGet]
         public IEnumerable<VehicleModel> Get()
         {
-            return _vehiclesDatabase.ToArray();
+            return _vehiclesRepository.Get().Select(v => v.ToModel()).ToArray();
         }
 
         [HttpGet("{name}")]
-        public ObjectResult Get(string name)
+        public ObjectResult Get(Guid id)
         {
-            var result = _vehiclesDatabase.FirstOrDefault(
-                v => v.FriendlyName.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var vehicle = _vehiclesRepository.Get(id);
 
-            if (result == null)
+            if (vehicle == null)
             {
                 return NotFound(new MissingItemModel("sdfsdfs"));
             }
 
-            return Ok(result);
+            return Ok(vehicle.ToModel());
         }
 
         [HttpPost]
-        public ActionResult Create([FromBody] VehicleCreate value)
+        public ActionResult<object> Create([FromBody] VehicleCreate value)
         {
-            var newVehicle = value.ToModel();
+            throw new NotImplementedException("use repo/domain");
+            //var newVehicle = value.ToModel();
 
-            _vehiclesDatabase.Add(newVehicle);
+            //_vehiclesDatabase.Add(newVehicle);
 
-            return CreatedAtAction(nameof(Get), new { id = newVehicle.FriendlyName }, newVehicle);
+            //return CreatedAtAction(nameof(Get), new { id = newVehicle.FriendlyName }, newVehicle);
         }
 
         [HttpDelete("{name}")]
-        public IActionResult Delete(string name)
+        public IActionResult Delete(Guid id)
         {
-            var forRemoval =
-                _vehiclesDatabase.FirstOrDefault(v => v.FriendlyName.Equals(name, StringComparison.OrdinalIgnoreCase));
+            _vehiclesRepository.Remove(id);
 
-            var removed = _vehiclesDatabase.Remove(forRemoval);
-
-            return removed ? (IActionResult)Ok() : NoContent();
+            return Ok();
         }
 
         [HttpPut("{name}")]
         public ActionResult Update(string name, [FromBody] VehicleUpdate value)
         {
-            var vehicle =
-                _vehiclesDatabase.FirstOrDefault(v => v.FriendlyName.Equals(name, StringComparison.OrdinalIgnoreCase));
+            throw new NotImplementedException("use repo/domain");
 
-            if (vehicle == null)
-            {
-                return NotFound();
-            }
+            //var vehicle =
+            //    _vehiclesDatabase.FirstOrDefault(v => v.FriendlyName.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-            vehicle.FriendlyName = value.Name;
+            //if (vehicle == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return CreatedAtAction(nameof(Get), new { id = vehicle.FriendlyName }, null);
+            //vehicle.FriendlyName = value.Name;
+
+            //return CreatedAtAction(nameof(Get), new { id = vehicle.FriendlyName }, null);
         }
     }
 }

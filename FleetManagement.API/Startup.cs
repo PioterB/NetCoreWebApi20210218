@@ -1,5 +1,7 @@
 using System;
 using System.Text;
+using CreoCraft.Domain;
+using CreoCraft.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +25,7 @@ namespace FleetManagement.Vehicles
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IVehiclesRepository, VehiclesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

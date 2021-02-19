@@ -10,4 +10,12 @@
         
         public string FriendlyName { get; set; }
     }
+
+    public static class VehicleExtensions
+    {
+        public static VehicleModel ToModel(this Vehicle source)
+        {
+            return new VehicleModel() {FriendlyName = source.Name};
+        }
+    }
 }
