@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using CreoCraft.Domain;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +11,7 @@ namespace FleetManagement.Vehicles.Controllers
 {
     [Route("api/v1/vehicles")]
     [ApiController]
+    [Authorize]
     public class VehiclesController : ControllerBase
     {
         private readonly IRepository<Guid, Vehicle> _vehiclesRepository;
@@ -22,6 +25,7 @@ namespace FleetManagement.Vehicles.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<VehicleModel> Get()
         {
             return _vehiclesRepository.Get().Select(v => v.ToModel()).ToArray();
@@ -41,6 +45,7 @@ namespace FleetManagement.Vehicles.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "PowerUser")]
         public ActionResult<object> Create([FromBody] VehicleCreate value)
         {
             var vehicle = _vehiclesService.Create(value.Name, value.Mileage);
@@ -57,6 +62,7 @@ namespace FleetManagement.Vehicles.Controllers
         }
 
         [HttpPut("{name}")]
+        [Authorize(Policy = "Admin")]
         public ActionResult Update(string name, [FromBody] VehicleUpdate value)
         {
             throw new NotImplementedException("use repo/domain");

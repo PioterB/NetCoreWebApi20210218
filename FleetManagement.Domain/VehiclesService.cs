@@ -14,6 +14,10 @@ namespace FleetManagement.Vehicles
 
         public Vehicle Create(string name, long mileage, Owner owner = null)
         {
+            /*
+             * business validation
+             */
+
             var item = new Vehicle(_idGenerator.Next(), name, mileage);
             if (owner != null)
             {
