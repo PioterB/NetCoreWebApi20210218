@@ -25,7 +25,7 @@ namespace FleetManagement.Vehicles
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IVehiclesRepository, VehiclesRepository>();
+            services.AddVehicles();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

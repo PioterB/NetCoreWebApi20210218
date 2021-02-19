@@ -12,10 +12,12 @@ namespace FleetManagement.Vehicles.Controllers
     public class VehiclesController : ControllerBase
     {
         private readonly IRepository<Guid, Vehicle> _vehiclesRepository;
+        private readonly IVehiclesService _vehiclesService;
 
-        public VehiclesController(IVehiclesRepository vehiclesRepository)
+        public VehiclesController(IVehiclesRepository vehiclesRepository, IVehiclesService vehiclesService)
         {
             _vehiclesRepository = vehiclesRepository;
+            _vehiclesService = vehiclesService;
         }
 
 
@@ -41,12 +43,9 @@ namespace FleetManagement.Vehicles.Controllers
         [HttpPost]
         public ActionResult<object> Create([FromBody] VehicleCreate value)
         {
-            throw new NotImplementedException("use repo/domain");
-            //var newVehicle = value.ToModel();
-
-            //_vehiclesDatabase.Add(newVehicle);
-
-            //return CreatedAtAction(nameof(Get), new { id = newVehicle.FriendlyName }, newVehicle);
+            var vehicle = _vehiclesService.Create(value.Name, value.Mileage);
+            _vehiclesRepository.Add(vehicle);
+            return CreatedAtAction(nameof(Get), new { id = vehicle.Id }, vehicle.ToModel());
         }
 
         [HttpDelete("{name}")]
