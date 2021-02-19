@@ -33,7 +33,8 @@ namespace FleetManagement.Security
 
         public string CreateToken(ApplicationUser user)
         {
-            var key = Encoding.ASCII.GetBytes("YourKey-2374-OFFKDI940NG7:56753253-tyuw-5769-0921-kfirox29zoxv");
+            var key = Encoding.ASCII.GetBytes(
+                "YourKey-2374-OFFKDI940NG7:56753253-tyuw-5769-0921-kfirox29zoxv");
             //Generate Token for user 
             var jwToken = new JwtSecurityToken(
                 issuer: "http://localhost:45092/",

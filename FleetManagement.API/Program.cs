@@ -14,6 +14,7 @@ namespace FleetManagement.Vehicles
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseKestrel(options => options.AddServerHeader = false);
                     webBuilder.UseStartup<Startup>();
                 });
     }

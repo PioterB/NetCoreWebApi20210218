@@ -29,7 +29,9 @@ namespace FleetManagement.Vehicles
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var SecretKey = Encoding.ASCII.GetBytes("YourKey-2374-OFFKDI940NG7:56753253-tyuw-5769-0921-kfirox29zoxv");
+            var tokenKey = Configuration["Jwt:key"];
+
+            var SecretKey = Encoding.ASCII.GetBytes(tokenKey);
 
             services.AddControllers();
             services.AddVehicles();
